@@ -125,11 +125,27 @@ Nodo* rellenarNotas(Nodo* head){
 	return head;
 }
 
+void deleteP4(Nodo* head){
+	Nodo* current = head;
+	while (current != head){
+		current = current->getNext();
+	}
+	current->setNext(nullptr);
+
+	current = head;
+	Nodo* deleteNodo = nullptr;
+	while (current != nullptr){
+		deleteNodo = current;
+		current = current->getNext();
+		delete deleteNodo;
+	}
+}
 
 void Problema4() {
   	Nodo* head = nullptr;
 	head = rellenarNotas(head);
   	calcularPromedio(head);
+	//deleteP4(head);
 }
 
 void Problema5() {
@@ -138,6 +154,8 @@ void Problema5() {
   	ordenarCamiones(&estacionamiento);
   	printEstacionamiento(&estacionamiento);
 }
+
+
 
 int main() {
   	Problema4();
